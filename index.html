@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Claculator</title>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <input type="text" class="input" id="input" name="input">
+            <div class="div">
+                <input type="button" value="AC" onclick="input.value=''" class="ex">
+                <input type="button" value="DE" onclick="input.value=input.value.toString().slice(0,-1)" class="ex">
+                <input type="button" value="." onclick="input.value+='.'" class="ex">
+                <input type="button" value="/" onclick="input.value+='/'" class="ex">
+            </div>
+
+            <div class="div">
+                <input type="button" value="7" onclick="input.value+='7'">
+                <input type="button" value="8" onclick="input.value+='8'">
+                <input type="button" value="9" onclick="input.value+='9'">
+                <input type="button" value="*" onclick="input.value+='*'" class="ex">
+            </div>
+
+            <div class="div">
+                <input type="button" value="4" onclick="input.value+='4'">
+                <input type="button" value="5" onclick="input.value+='5'">
+                <input type="button" value="6" onclick="input.value+='6'">
+                <input type="button" value="-" onclick="input.value+='-'" class="ex">
+            </div>
+
+            <div class="div">
+                <input type="button" value="1" onclick="input.value+='1'">
+                <input type="button" value="2" onclick="input.value+='2'">
+                <input type="button" value="3" onclick="input.value+='3'">
+                <input type="button" value="+" onclick="input.value+='+'" class="ex">
+            </div>
+
+            <div class="div">
+                <input type="button" value="00" onclick="input.value+='00'">
+                <input type="button" value="0" onclick="input.value+='0'">
+                <input type="button" value="=" onclick="input.value=eval(input.value)" style="width:200px;" class="ex">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var display = document.getElementById("input");
+        document.addEventListener("keydown",(e)=>{
+            if(e.key!="Backspace" && e.key!="Enter" && e.key!="Shift"){
+                display.value += e.key;
+            }
+            if(e.key=="Backspace"){
+                display.value = display.value.toString().slice(0,-1);
+            }
+            if(e.key=="Enter"){
+                display.value = eval(display.value);
+            }
+        })
+    </script>
+</body>
+</html>
